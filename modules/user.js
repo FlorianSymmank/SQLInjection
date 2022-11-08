@@ -1,28 +1,37 @@
-// https://northflank.com/guides/connecting-to-a-postgresql-database-using-node-js
-// https://node-postgres.com/
+const { getClient } = require("./get-client");
 
-const { Client } = require('pg');
-require("dotenv").config();
+function getUser(req, response) {
+  // headerkey username
+  // sleeps
+  // Hans'; SELECT CASE WHEN (1=1) THEN pg_sleep(2) ELSE pg_sleep(0) END-- 
+  // sleeps
+  // '; SELECT CASE WHEN (name='Hans') THEN pg_sleep(2) ELSE pg_sleep(0) END FROM users--
+  // wont sleep
+  // '; SELECT CASE WHEN (name='Hanni') THEN pg_sleep(2) ELSE pg_sleep(0) END FROM users--
 
-async function getUser(req, response) {
-    
-    (async () => {
-      const client = new Client({
-        host: process.env.PG_HOST,
-        port: process.env.PG_PORT,
-        user: process.env.PG_USER,
-        password: process.env.PG_PASSWORD,
-        database: process.env.PG_DATABASE,
-        ssl: false,
-      });
-      await client.connect();
-      const res = await client.query('SELECT $1::text as connected', ['Connection to postgres successful!']);
-      console.log(res.rows[0].connected);
-      await client.end();
-    })();
+  let username = req.header("username");
+  let query = "SELECT * FROM users WHERE name LIKE '" + username + "';";
+  console.log(query);
 
-  response.status(201);
-  response.send();
+  getClient().then((client) => {
+    client.query(query).then((entries) => {
+      // some debug stuff
+      console.log(
+        `Database entries for ${username}: ${entries.rowCount} row(s)`
+      );
+      if (entries.rows > 0) {
+        console.log(Object.keys(entries.rows?.[0]).join("\t"));
+        console.log(
+          `${entries.rows.map((r) => Object.values(r).join("\t")).join("\n")}`
+        );
+      }
+
+      response.status(201);
+      response.send();
+
+      client.end();
+    });
+  });
 }
 module.exports = {
   getUser,
