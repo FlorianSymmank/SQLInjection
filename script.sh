@@ -2,7 +2,7 @@
 # updates / installs
 sudo apt update
 sudo apt -y upgrade
-sudo apt install curl -y
+# sudo apt install curl -y
 sudo apt-get install git -y
 sudo apt-get install postgresql -y
 sudo apt install npm -y
@@ -16,6 +16,11 @@ cd ~
 git clone https://github.com/FlorianSymmank/SQLInjection.git
 
 # posgresql
+# psql --version
+cd ~/SQLInjection
+sudo -u postgres -i psql -c "ALTER ROLE postgres WITH PASSWORD 'j4UvH)kgeD';"
+sudo -u postgres -i createdb hospital
+sudo -u postgres -i psql hospital < sql.txt
 
 # node
 # node --version
