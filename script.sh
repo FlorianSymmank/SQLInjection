@@ -6,9 +6,9 @@ sudo apt install curl -y
 sudo apt-get install git -y
 sudo apt-get install postgresql -y
 sudo apt install npm -y
-sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo dpkg -i --force-overwrite /var/cache/apt/archives/nodejs_16.18.1-deb-1nodesource1_amd64.deb
-sudo apt f- install -y nodejs
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 
 # git
 # git --version
