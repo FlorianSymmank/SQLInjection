@@ -15,4 +15,8 @@ name: sqlinject
 computername: sqlinject-VirtalBox  
 password: j4UvH)kgeD  
 
-### [Einrichten](./script.sh)  aller programme (script.sh)
+### [Einrichten](./script.sh)  aller programme (script.sh)  
+sh script.sh
+
+### psql zugriff per cmd
+sudo -u postgres psql
