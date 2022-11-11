@@ -1,7 +1,7 @@
 ## VirtualBox    
 Neue erstellen  
 Typ: linux  
-Version: Unbuntu 64bit  
+Version: Ubuntu 64bit  
 Speichergroeße: 8192  
 Festplatte erzeugen
 Dateigroeße: 15 GB (VDI, dynamisch alloziert)  
@@ -12,7 +12,7 @@ https://ubuntu.com/download/desktop
 
 ### VirtualBox SQLInject Ubuntu  
 name: sqlinject  
-computername: sqlinject-VirtalBox  
+computername: sqlinject-VirtualBox  
 password: j4UvH)kgeD  
 
 ### [Einrichten](./script.sh)  aller programme (script.sh)  
