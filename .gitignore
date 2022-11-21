@@ -131,3 +131,6 @@ dist
 
 # VM Images
 VMs
+
+#vscode
+.vscode

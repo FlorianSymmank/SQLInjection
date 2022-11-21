@@ -1,0 +1,1 @@
+https://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet

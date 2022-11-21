@@ -19,4 +19,5 @@ password: j4UvH)kgeD
 sh script.sh
 
 ### psql zugriff per cmd
-sudo -u postgres psql
+sudo -u postgres psql  
+change db = \connect hospital
