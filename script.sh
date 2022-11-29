@@ -31,12 +31,12 @@ sudo -u postgres -i psql canteen_db < canteen.sql
 # Create Users
 sudo -u postgres -i psql -c "CREATE USER hospital WITH ENCRYPTED PASSWORD 'FS5sMhx(MD';"
 sudo -u postgres -i psql -c "GRANT CONNECT ON DATABASE hospital_db TO hospital;"
-sudo -u postgres -i psql -d hospital_db -c "GRANT ALL PRIVILEGES ON TABELS IN SCHEMA public TO hospital;"
+sudo -u postgres -i psql -d hospital_db -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO hospital;"
 
 
 sudo -u postgres -i psql -c "CREATE USER canteen WITH ENCRYPTED PASSWORD 'gNXY=qfn4B';"
 sudo -u postgres -i psql -c "GRANT CONNECT ON DATABASE canteen_db TO canteen;"
-sudo -u postgres -i psql -d canteen_db -c "GRANT ALL PRIVILEGES ON TABELS IN SCHEMA public TO canteen;"
+sudo -u postgres -i psql -d canteen_db -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO canteen;"
 sudo -u postgres -i psql -c "GRANT CONNECT ON DATABASE hospital_db TO canteen;"
 sudo -u postgres -i psql -d hospital_db -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO canteen;"
 
@@ -44,5 +44,5 @@ sudo -u postgres -i psql -d hospital_db -c "GRANT SELECT ON ALL TABLES IN SCHEMA
 # node --version
 cd ~/SQLInjection/node_js_server
 npm ci
-nonode app.js &# oder npm run start
+node app.js &# oder npm run start
 # serverlistens on 127.0.0.1:3000
