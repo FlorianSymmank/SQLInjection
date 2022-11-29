@@ -36,5 +36,8 @@ CREATE TABLE Orders (
     CONSTRAINT Orders_pk PRIMARY KEY (orderId)
 );
 
+
+INSERT INTO DishAllergen (dishId, allergen) VALUES (1, 'Hannes');
+
 -- End of file.
 
