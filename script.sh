@@ -19,8 +19,22 @@ git clone https://github.com/FlorianSymmank/SQLInjection.git
 # psql --version
 cd ~/SQLInjection
 sudo -u postgres -i psql -c "ALTER ROLE postgres WITH PASSWORD 'j4UvH)kgeD';"
-sudo -u postgres -i createdb hospital
-sudo -u postgres -i psql hospital < sql.txt
+
+# Create DBs
+sudo -u postgres -i createdb hospitalDB
+sudo -u postgres -i createdb canteenDB
+
+# Create Tables
+sudo -u postgres -i psql hospitalDB < hospital.sql
+sudo -u postgres -i psql canteenDB < canteen.sql
+
+# Create Users
+sudo -u postgres -i psql -c "CREATE USER hospital WITH ENCRYPTED PASSWORD 'FS5sMhx(MD';"
+sudo -u postgres -i psql -c "GRANT ALL PRIVILEGES ON DATABASE hospitalDB TO hospital;"
+sudo -u postgres -i psql -c "CREATE USER canteen WITH ENCRYPTED PASSWORD 'hosp';"
+sudo -u postgres -i psql -c "GRANT ALL PRIVILEGES ON DATABASE canteenDB TO canteen;"
+sudo -u postgres -i psql -c "GRANT CONNECT ON DATABASE hospitalDB TO canteen;"
+sudo -u postgres -i psql -c "GRANT SELECT ON hospitalDB TO canteen;"
 
 # node
 # node --version
