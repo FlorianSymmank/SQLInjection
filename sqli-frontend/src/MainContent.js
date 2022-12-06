@@ -21,7 +21,7 @@ const MainContent = () => {
 		<div className="MainContent">
 			<span>Canteen Menu for {date.toDateString()}</span>
 			<input type="date" value={dateToString(date)} onChange={handleChange} />
-			<Menu date={date} />
+			<Menu date={dateToString(date)} />
 		</div>
 	);
 }

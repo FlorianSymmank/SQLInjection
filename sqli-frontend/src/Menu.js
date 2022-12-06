@@ -1,30 +1,25 @@
 import './Menu.css';
 import Dish from './Dish';
+import {useState} from 'react';
+import {apiCall, useAsyncEffect} from './util';
 
 const Menu = ({date}) => {
 	
-	const dishes = [
-		{
-			name: 'Chicken noodle casserole',
-			description: 'Very tasty',
-			ingredients: [
-				'chicken',
-				'noodles'
-			],
-			price: 299
-		},
-		{
-			name: 'Salad',
-			description: 'Green',
-			ingredients: [
-				'salad'
-			],
-			price: 109
-		}
-	];
+	const [dishes, setDishes] = useState(null);
+	
+	useAsyncEffect(async () => {
+		
+		console.log('a');
+		const menu = await apiCall(`menu/${date}`);
+		
+		setDishes(menu.dishes);
+		
+	}, [date]);
 	
 	return <div>
-		{dishes.map(dish =>
+		{dishes === null ? 
+			<p>Loading...</p>
+		: dishes.map(dish =>
 			<Dish name={dish.name} description={dish.description} ingredients={dish.ingredients} price={dish.price} />
 		)}
 	</div>
