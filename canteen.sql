@@ -35,22 +35,22 @@ CREATE TABLE Orders (
     CONSTRAINT Orders_pk PRIMARY KEY (orderId)
 );
 
-INSERT INTO Dishes (dishId, price, name) VALUES (0, $3.50, "Chicken Noodle Casserole");
-INSERT INTO Dishes (dishId, price, name) VALUES (1, $3.90, "Tuna Patties");
-INSERT INTO Dishes (dishId, price, name) VALUES (2, $3.50, "Quattro Formaggi Pizza");
-INSERT INTO Dishes (dishId, price, name) VALUES (3, $4.80, "Veggie Burger");
-INSERT INTO Dishes (dishId, price, name) VALUES (4, $2.40, "Biscuits and Gravy");
-INSERT INTO Dishes (dishId, price, name) VALUES (5, $2.80, "Bacon and Spinach Pasta");
-INSERT INTO Dishes (dishId, price, name) VALUES (6, $2.20, "Chicken Caesar Salad");
-INSERT INTO Dishes (dishId, price, name) VALUES (7, $5.00, "Honey Garlic Shrimp");
-INSERT INTO Dishes (dishId, price, name) VALUES (8, $4.70, "Honey Mustard Salmon");
-INSERT INTO Dishes (dishId, price, name) VALUES (9, $3.30, "Tuna melt Sandwich");
-INSERT INTO Dishes (dishId, price, name) VALUES (10, $4.90, "Lemon Butter Shrimp with Asparagus");
-INSERT INTO Dishes (dishId, price, name) VALUES (11, $2.90, "Bacon Corn Chowder");
-INSERT INTO Dishes (dishId, price, name) VALUES (12, $2.30, "Fried Noodles with Chicken and Peanut Sauce");
-INSERT INTO Dishes (dishId, price, name) VALUES (13, $4.00, "Chicken Cordon Bleu");
-INSERT INTO Dishes (dishId, price, name) VALUES (14, $2.20, "Chocolate Cake");
-INSERT INTO Dishes (dishId, price, name) VALUES (15, $2.20, "Creme Brulee");
+INSERT INTO Dishes (dishId, price, name) VALUES (0, '$3.50', 'Chicken Noodle Casserole');
+INSERT INTO Dishes (dishId, price, name) VALUES (1, '$3.90', 'Tuna Patties');
+INSERT INTO Dishes (dishId, price, name) VALUES (2, '$3.50', 'Quattro Formaggi Pizza');
+INSERT INTO Dishes (dishId, price, name) VALUES (3, '$4.80', 'Veggie Burger');
+INSERT INTO Dishes (dishId, price, name) VALUES (4, '$2.40', 'Biscuits and Gravy');
+INSERT INTO Dishes (dishId, price, name) VALUES (5, '$2.80', 'Bacon and Spinach Pasta');
+INSERT INTO Dishes (dishId, price, name) VALUES (6, '$2.20', 'Chicken Caesar Salad');
+INSERT INTO Dishes (dishId, price, name) VALUES (7, '$5.00', 'Honey Garlic Shrimp');
+INSERT INTO Dishes (dishId, price, name) VALUES (8, '$4.70', 'Honey Mustard Salmon');
+INSERT INTO Dishes (dishId, price, name) VALUES (9, '$3.30', 'Tuna melt Sandwich');
+INSERT INTO Dishes (dishId, price, name) VALUES (10, '$4.90', 'Lemon Butter Shrimp with Asparagus');
+INSERT INTO Dishes (dishId, price, name) VALUES (11, '$2.90', 'Bacon Corn Chowder');
+INSERT INTO Dishes (dishId, price, name) VALUES (12, '$2.30', 'Fried Noodles with Chicken and Peanut Sauce');
+INSERT INTO Dishes (dishId, price, name) VALUES (13, '$4.00', 'Chicken Cordon Bleu');
+INSERT INTO Dishes (dishId, price, name) VALUES (14, '$2.20', 'Chocolate Cake');
+INSERT INTO Dishes (dishId, price, name) VALUES (15, '$2.20', 'Creme Brulee');
 
 
 INSERT INTO Menu (id, dishId, date, secret) VALUES (0, 0, '2023-01-02', false);
@@ -77,13 +77,13 @@ INSERT INTO Menu (id, dishId, date, secret) VALUES (14, 14, '2023-01-08', true);
 INSERT INTO Menu (id, dishId, date, secret) VALUES (15, 10, '2023-01-08', false);
 INSERT INTO Menu (id, dishId, date, secret) VALUES (16, 11, '2023-01-08', false);
 
-INSERT INTO DishAllergen (dishId, allergen) VALUES (0, "lactose");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (2, "lactose");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (4, "lactose");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (11, "lactose");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (12, "peanut");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (13, "lactose");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (14, "egg");
-INSERT INTO DishAllergen (dishId, allergen) VALUES (15, "lactose");
+INSERT INTO DishAllergen (dishId, allergen) VALUES (0, 'lactose');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (2, 'lactose');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (4, 'lactose');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (11, 'lactose');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (12, 'peanut');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (13, 'lactose');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (14, 'egg');
+INSERT INTO DishAllergen (dishId, allergen) VALUES (15, 'lactose');
 
 -- End of file.
