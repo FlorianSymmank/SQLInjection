@@ -11,7 +11,7 @@ const getMenu = async (req, res) => {
 			WHERE Menu.dishId = Dishes.dishId AND Menu.date = '${date}';
 	`);
 	
-	const menuItems = await Promise.all(rows.map(async ({dishid, name, price}) => {
+	const dishes = await Promise.all(rows.map(async ({dishid, name, price}) => {
 		
 		const {rows} = await sql.query(`
 			SELECT allergen FROM DishAllergen
@@ -28,7 +28,9 @@ const getMenu = async (req, res) => {
 		
 	}));
 	
-	res.json(menuItems);
+	res.json({
+		dishes
+	});
 	res.end();
 	
 };
