@@ -1,4 +1,4 @@
-const { getClient } = require("./get-client");
+const { sqlClientPromise } = require("./sql");
 
 function getAllergen(req, response) {
 
@@ -6,7 +6,7 @@ function getAllergen(req, response) {
     let query = "SELECT * FROM DishAllergen WHERE dishId =" + id + ";";
     console.log(query);
 
-    getClient().then((client) => {
+    sqlClientPromise.then((client) => {
         client.query(query).then((entries) => {
             console.log(entries.rows)
             if (entries.rows.length > 0) {
