@@ -1,28 +1,36 @@
-const getMenu = (req, res) => {
+const {sqlClientPromise} = require("./sql");
+
+const getMenu = async (req, res) => {
 	
-	const menu = {
-		dishes: [
-			{
-				name: 'Chicken noodle casserole',
-				description: 'Very tasty',
-				ingredients: [
-					'chicken',
-					'noodles'
-				],
-				price: 299
-			},
-			{
-				name: 'Salad',
-				description: 'Green',
-				ingredients: [
-					'salad'
-				],
-				price: 109
-			}
-		]
-	};
+	const date = req.params.date;
 	
-	res.json(menu);
+	const sql = await sqlClientPromise;
+	
+	const {rows} = await sql.query(`
+		SELECT Dishes.dishId, Dishes.name, Dishes.price FROM Menu, Dishes
+			WHERE Menu.dishId = Dishes.dishId AND Menu.date = '${date}';
+	`);
+	
+	const dishes = await Promise.all(rows.map(async ({dishid, name, price}) => {
+		
+		const {rows} = await sql.query(`
+			SELECT allergen FROM DishAllergen
+				WHERE dishId='${dishid}'
+		`);
+		
+		const allergens = rows.map(({allergen}) => allergen);
+		
+		return {
+			name,
+			price,
+			allergens
+		};
+		
+	}));
+	
+	res.json({
+		dishes
+	});
 	res.end();
 	
 };

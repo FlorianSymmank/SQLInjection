@@ -20,7 +20,7 @@ const Menu = ({date}) => {
 		{dishes === null ? 
 			<p>Loading...</p>
 		: dishes.map(dish =>
-			<Dish name={dish.name} description={dish.description} ingredients={dish.ingredients} price={dish.price} />
+			<Dish name={dish.name} price={dish.price} allergens={dish.allergens} />
 		)}
 	</div>
 	

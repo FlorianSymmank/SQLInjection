@@ -1,4 +1,4 @@
-const { getClient } = require("./get-client");
+const { sqlClientPromise } = require("./sql");
 
 function getUser(req, response) {
   // headerkey username
@@ -13,7 +13,7 @@ function getUser(req, response) {
   let query = "SELECT * FROM users WHERE name LIKE '" + username + "';";
   console.log(query);
 
-  getClient().then((client) => {
+  sqlClientPromise.then((client) => {
     client.query(query).then((entries) => {
       // some debug stuff
       console.log(
