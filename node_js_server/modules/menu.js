@@ -1,38 +1,39 @@
-const {sqlClientPromise} = require("./sql");
+const { sqlClientPromise } = require("./sql");
 
 const getMenu = async (req, res) => {
-	
+
 	const date = req.params.date;
-	
+
 	const sql = await sqlClientPromise;
-	
-	const {rows} = await sql.query(`
+
+	const { rows } = await sql.query(`
 		SELECT Dishes.dishId, Dishes.name, Dishes.price FROM Menu, Dishes
-			WHERE Menu.dishId = Dishes.dishId AND Menu.date = '${date}';
+			WHERE Menu.dishId = Dishes.dishId AND Menu.date = '${date}' AND NOT Menu.secret;
 	`);
-	
-	const dishes = await Promise.all(rows.map(async ({dishid, name, price}) => {
-		
-		const {rows} = await sql.query(`
+
+	const dishes = await Promise.all(rows.map(async ({ dishid, name, price }) => {
+
+		const { rows } = await sql.query(`
 			SELECT allergen FROM DishAllergen
 				WHERE dishId='${dishid}'
 		`);
-		
-		const allergens = rows.map(({allergen}) => allergen);
+
+		const allergens = rows.map(({ allergen }) => allergen);
 		
 		return {
+			dishid,
 			name,
 			price,
 			allergens
 		};
-		
+
 	}));
-	
+
 	res.json({
 		dishes
 	});
 	res.end();
-	
+
 };
 
 module.exports = {
