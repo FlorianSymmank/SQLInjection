@@ -40,6 +40,10 @@ sudo -u postgres -i psql -d canteen_db -c "GRANT ALL PRIVILEGES ON ALL TABLES IN
 sudo -u postgres -i psql -c "GRANT CONNECT ON DATABASE hospital_db TO canteen;"
 sudo -u postgres -i psql -d hospital_db -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO canteen;"
 
+# cross db queries
+sudo -u postgres -i psql -d canteen_db -c "create extension dblink;"
+# sudo -u postgres -i psql -d hospital_db -c "create extension dblink;" // no link to canteen_db needed
+
 # node
 # node --version
 cd ~/SQLInjection/node_js_server

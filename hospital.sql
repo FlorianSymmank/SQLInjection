@@ -59,5 +59,15 @@ CREATE TABLE Treatments (
     CONSTRAINT Treatments_pk PRIMARY KEY (treatmentId)
 );
 
+
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (1, 'egg');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (1, 'lactose');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (2, 'peanut');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (4, 'peanut');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (5, 'lactose');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (5, 'peanut');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (9, 'egg');
+INSERT INTO PatientAllergen (patientId, allergen) VALUES (10, 'lactose');
+
 -- End of file.
 

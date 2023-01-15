@@ -3,8 +3,15 @@ const { sqlClientPromise } = require("./sql");
 const getMenu = async (req, res) => {
 
 	const date = req.params.date;
+	const patientId = req.params.patientId;
 
 	const sql = await sqlClientPromise;
+
+	// cross db query to check if patient is allergic to ingredient
+	const result = await sql.query(`
+		SELECT patientId, allergen FROM dblink('host=localhost user=canteen password=gNXY=qfn4B dbname=hospital_db', 'SELECT patientId, allergen FROM PatientAllergen WHERE patientId=${patientId}') as (patientID int, allergen text);
+	`);
+	const allericTo = result.rows;
 
 	const { rows } = await sql.query(`
 		SELECT Dishes.dishId, Dishes.name, Dishes.price FROM Menu, Dishes
@@ -19,12 +26,14 @@ const getMenu = async (req, res) => {
 		`);
 
 		const allergens = rows.map(({ allergen }) => allergen);
-		
+		const allergicReaction = allericTo.some(v => allergens.includes(v.allergen));
+
 		return {
 			dishid,
 			name,
 			price,
-			allergens
+			allergens,
+			allergicReaction
 		};
 
 	}));
