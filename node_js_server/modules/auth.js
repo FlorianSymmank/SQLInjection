@@ -2,30 +2,21 @@ const { sqlClientPromise } = require("./sql");
 
 module.exports = async function (req, res, next) {
 
-    const userId = req.headers["userid"];
+    const patientId = req.headers["patientid"];
     const password = req.headers["password"];
 
-	const sql = await sqlClientPromise;
+    const [sqlCanteen, sqlHospital] = await sqlClientPromise;
 
-    const { rows } = await sql.query(`
+    const { rows } = await sqlHospital.query(`
         SELECT Count(Patients.patientId) FROM Patients
-        WHERE Patients.patientId = '${userId}' AND Patients.password = '${password}';
+        WHERE Patients.patientId = ${patientId} AND Patients.pwd = '${password}';
     `);
 
-    check(userId, password).then((res) => {
-        if (res) {
-            return next();
-        } else {
-            var err = new Error('Not authorized! Go back!');
-            err.status = 401;
-            // console.log("err")
-            return next(err);
-        }
-    })
-
-}
-
-async function check(userId, password) {
-    console.log(userId, password)
-    return true;
+    if (rows[0].count > 0) {
+        return next();
+    } else {
+        var err = new Error('Not authorized!');
+        err.status = 401;
+        return next(err);
+    }
 }

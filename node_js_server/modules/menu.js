@@ -5,8 +5,8 @@ const getMenu = async (req, res) => {
 	try {
 		
 		const date = req.params.date;
-		const patientId = req.params.patientId;
-		
+		const patientId = req.headers["patientid"];
+
 		const [sqlCanteen, sqlHospital] = await sqlClientPromise;
 		
 		// cross db query to check if patient is allergic to ingredient
@@ -44,6 +44,8 @@ const getMenu = async (req, res) => {
 		res.json({
 			dishes
 		});
+
+		res.status(200);
 		res.end();
 		
 	} catch (error) {
