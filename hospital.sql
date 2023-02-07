@@ -28,6 +28,7 @@ CREATE TABLE PatientAllergen (
 -- Table: Patients
 CREATE TABLE Patients (
     patientId serial  NOT NULL,
+    pwd text NOT NULL,
     name text  NOT NULL,
     birthdate date  NOT NULL,
     streetname text  NOT NULL,
@@ -36,7 +37,6 @@ CREATE TABLE Patients (
     country text  NOT NULL,
     telefonnumber text  NOT NULL,
     creditcardnumber text  NOT NULL,
-    balance money  NOT NULL,
     CONSTRAINT Patients_pk PRIMARY KEY (patientId)
 );
 
@@ -58,6 +58,18 @@ CREATE TABLE Treatments (
     treatmentId serial  NOT NULL,
     CONSTRAINT Treatments_pk PRIMARY KEY (treatmentId)
 );
+
+INSERT INTO Patients (pwd, name, birthdate, streetname, postcode, city, country, telefonnumber, creditcardnumber) VALUES 
+('coolPW', 'Han Solo', '1970-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045504555', '4385822056110982'),
+('coolPW', 'Samwise Gamgee', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508755', '5565822056110841'),
+('coolPW', 'Jack Sparrow', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '030455087567', '8315822056110334'),
+('coolPW', 'Harry Potter', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045507532', '4975822056110510'),
+('coolPW', 'John Snow', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508452', '1165822056110887'),
+('coolPW', 'Leia Organa', '1970-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508476', '9875822056110434'),
+('coolPW', 'Galadriel', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045558145', '3545822056110479'),
+('coolPW', 'Tia Dalma', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508676', '2845822056110369'),
+('coolPW', 'Hermione Granger', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508637', '9875822056110754'),
+('coolPW', 'Rhaenyra Targaryen', '2000-01-01', 'streetname', '12345', 'Berlin', 'Germany', '03045508765', '1445822056110922');
 
 
 INSERT INTO PatientAllergen (patientId, allergen) VALUES (1, 'egg');
