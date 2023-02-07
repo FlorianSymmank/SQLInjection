@@ -1,24 +1,20 @@
 import './Menu.css';
 import Dish from './Dish';
-import { useState } from 'react';
-import { apiCall, useAsyncEffect } from './util';
+import {useState} from 'react';
+import {apiCall, useAsyncEffect} from './util';
 
-const Menu = ({ date, patientId }) => {
-
+const Menu = ({date, patientName}) => {
+	
 	const [dishes, setDishes] = useState(null);
-
+	
 	useAsyncEffect(async () => {
-		const menu = await apiCall(`menu/${date}/${patientId}`);
+		
+		const menu = await apiCall(patientName === null ? `menu/${date}` : `menu/${date}?name=${patientName}`);
 		setDishes(menu.dishes);
-
-	}, [date, patientId]);
-
-	return <div>
-		<div>
-			Angriff -{'>'} localhost:3001/api/menu/2023-01-04'--<br />
-			# normalerweise werden secret dishes versteckt, comment hebelt check aus
-		</div>
-
+		
+	}, [date, patientName]);
+	
+	return <>
 		{dishes === null ?
 			<p>Loading...</p>
 			:
@@ -26,8 +22,8 @@ const Menu = ({ date, patientId }) => {
 				<Dish key={dish.dishid} name={dish.name} price={dish.price} allergens={dish.allergens} allergicReaction={dish.allergicReaction} />
 			)
 		}
-	</div>
-
+	</>;
+	
 };
 
 export default Menu;
