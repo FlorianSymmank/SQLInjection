@@ -3,16 +3,28 @@ require('dotenv').config();
 
 const sqlClientPromise = new Promise((resolve, reject) => {
 	
-	const client = new Client({
+	const canteenClient = new Client({
 		host: process.env.PG_HOST,
 		port: process.env.PG_PORT,
 		user: process.env.PG_USER,
 		password: process.env.PG_PASSWORD,
-		database: process.env.PG_DATABASE,
+		database: process.env.PG_CANTEEN_DB,
 		ssl: false,
 	});
 	
-	client.connect().then(resolve(client));
+	const hospitalClient = new Client({
+		host: process.env.PG_HOST,
+		port: process.env.PG_PORT,
+		user: process.env.PG_USER,
+		password: process.env.PG_PASSWORD,
+		database: process.env.PG_HOSPITAL_DB,
+		ssl: false,
+	});
+	
+	Promise.all([
+		canteenClient.connect(),
+		hospitalClient.connect()
+	]).then(() => resolve([canteenClient, hospitalClient]));
 	
 });
 
