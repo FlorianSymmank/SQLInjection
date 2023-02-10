@@ -1,0 +1,11 @@
+.hidden {
+  visibility: hidden;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+}
