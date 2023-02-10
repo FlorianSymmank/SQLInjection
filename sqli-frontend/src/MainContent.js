@@ -2,7 +2,7 @@ import './MainContent.css';
 import { useState } from 'react';
 import Menu from './Menu';
 
-const MainContent = ({patientName}) => {
+const MainContent = ({loginData}) => {
 	
 	const [date, setDate] = useState(new Date());
 	
@@ -23,7 +23,7 @@ const MainContent = ({patientName}) => {
 				<span>Canteen Menu for {date.toDateString()}</span>
 				<input type="date" value={dateToString(date)} onChange={handleDateChange} />
 			</div>
-			<Menu date={dateToString(date)} patientName={patientName} />
+			<Menu date={dateToString(date)} loginData={loginData} />
 		</div>
 	);
 }

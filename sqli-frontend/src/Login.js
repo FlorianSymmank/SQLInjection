@@ -1,8 +1,9 @@
 import {useState} from 'react';
 
-const Login = ({setPatientName}) => {
+const Login = ({setLoginData}) => {
 	
 	const [name, setName] = useState('');
+	const [password, setPassword] = useState('');
 	
 	const handleNameChange = event => {
 		
@@ -10,15 +11,29 @@ const Login = ({setPatientName}) => {
 		
 	};
 	
-	const login = () => {
+	const handlePasswordChange = event => {
 		
-		setPatientName(name);
+		setPassword(event.target.value);
+		
+	};
+	
+	const login = async () => {
+		
+		const loginData = {
+			name,
+			password,
+			isGuest: false
+		};
+		
+		setLoginData(loginData);
 		
 	};
 	
 	const skip = () => {
 		
-		setPatientName(null);
+		setLoginData({
+			isGuest: true
+		});
 		
 	};
 	
@@ -26,6 +41,8 @@ const Login = ({setPatientName}) => {
 		<h2>Login</h2>
 		Enter name to login:
 		<input value={name} onChange={handleNameChange} />
+		Enter password:
+		<input value={password} onChange={handlePasswordChange} />
 		<button onClick={login}>Login</button>
 		<button onClick={skip}>Continue as guest</button>
 	</>;
