@@ -52,11 +52,9 @@ const getMenu = async (req, res) => {
 		res.end();
 
 	} catch (error) {
-
 		res.status(500);
-		res.json(error);
+		res.json(error.stack);
 		res.end();
-
 	}
 
 };

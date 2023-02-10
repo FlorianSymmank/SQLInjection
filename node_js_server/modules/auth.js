@@ -18,8 +18,6 @@ module.exports = async function (req, res, next) {
 
     if (rows.length > 0) {
         req.headers["patientid"] = rows[0].patientid;
-        res.set("patientid",  rows[0].patientid);
-
         return next();
     } else {
         var err = new Error('Not authorized!');
