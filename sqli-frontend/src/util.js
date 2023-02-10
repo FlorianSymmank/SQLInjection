@@ -1,10 +1,13 @@
 import {useEffect} from 'react';
 
-const apiCall = async (location) => {
+const apiCall = async (location, loginData) => {
 	
 	const response = await fetch(`/api/${location}`, {
 		headers: {
-			'Accept': 'application/json'
+			'Accept': 'application/json',
+			'patientname': loginData.name,
+			'password': loginData.password,
+			'guest': `${loginData.isGuest}`
 		}
 	});
 	

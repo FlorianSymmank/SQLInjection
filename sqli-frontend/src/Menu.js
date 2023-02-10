@@ -3,16 +3,16 @@ import Dish from './Dish';
 import {useState} from 'react';
 import {apiCall, useAsyncEffect} from './util';
 
-const Menu = ({date, patientName}) => {
+const Menu = ({date, loginData}) => {
 	
 	const [dishes, setDishes] = useState(null);
 	
 	useAsyncEffect(async () => {
 		
-		const menu = await apiCall(patientName === null ? `menu/${date}` : `menu/${date}?name=${patientName}`);
+		const menu = await apiCall(`menu/${date}`, loginData);
 		setDishes(menu.dishes);
 		
-	}, [date, patientName]);
+	}, [date, loginData]);
 	
 	return <>
 		{dishes === null ?

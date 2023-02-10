@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 const App = () => {
 	
-	const [patientName, setPatientName] = useState(undefined);
+	const [loginData, setLoginData] = useState(undefined);
 	
 	return (
 		<div className="App">
@@ -13,10 +13,10 @@ const App = () => {
 				Hospital Canteen Menu
 			</header>
 			<div className="App-main-content">
-				{patientName === undefined ?
-					<Login setPatientName={setPatientName} />
+				{loginData === undefined ?
+					<Login setLoginData={setLoginData} />
 				:
-					<MainContent patientName={patientName} />
+					<MainContent loginData={loginData} />
 				}
 			</div>
 		</div>
