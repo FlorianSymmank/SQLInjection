@@ -28,14 +28,19 @@ const Login = ({setLoginData}) => {
 			isGuest: false
 		};
 		
-		try {
-			// test if credentials are correct, throws if not
-			await apiCall(`menu/2023-01-01`, loginData);
+		const result = await apiCall(`login`, loginData);
+		
+		if (result.success) {
+			
 			setLoginData(loginData);
 			setLoginFailed(false);
-		} catch (e) {
+			
+		} else {
+			
 			setLoginFailed(true);
+			
 		}
+		
 	};
 	
 	const skip = () => {
