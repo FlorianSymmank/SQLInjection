@@ -1,6 +1,7 @@
 const express = require("express");
 const publicviewsRouter = require("./publicviews");
 const apiRouter = require("./apiRouter");
+const loginRouter = require("./loginRouter");
 const auth = require(global.appRoot + "/modules/auth");
 
 
@@ -13,6 +14,7 @@ module.exports = function (app) {
 	app.use("/js", express.static(__dirname + "public/js"));
 	app.use("/images", express.static(__dirname + "public/images"));
 
+	app.use("/api/login", loginRouter);
 	app.use(auth);
 	app.use("/api", apiRouter);
 

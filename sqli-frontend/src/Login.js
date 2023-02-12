@@ -28,14 +28,19 @@ const Login = ({setLoginData}) => {
 			isGuest: false
 		};
 		
-		try {
-			// test if credentials are correct, throws if not
-			await apiCall(`menu/2023-01-01`, loginData);
+		const result = await apiCall(`login`, loginData);
+		
+		if (result.success) {
+			
 			setLoginData(loginData);
 			setLoginFailed(false);
-		} catch (e) {
+			
+		} else {
+			
 			setLoginFailed(true);
+			
 		}
+		
 	};
 	
 	const skip = () => {
@@ -46,12 +51,19 @@ const Login = ({setLoginData}) => {
 		
 	};
 	
+	const handleKeyDown = event => {
+		
+		if (event.key === 'Enter')
+			login().catch(err => console.error(err));
+		
+	};
+	
 	return <>
 		<div>
 			<h2>Login</h2>
-			<input value={name} onChange={handleNameChange} placeholder='Name' />
+			<input value={name} onChange={handleNameChange} onKeyDown={handleKeyDown} placeholder='Name' />
 			<br />
-			<input value={password} onChange={handlePasswordChange} type="password" placeholder='Password' />
+			<input value={password} onChange={handlePasswordChange} onKeyDown={handleKeyDown} type="password" placeholder='Password' />
 			<br />
 			<br />
 			<button onClick={login}>Login</button>
