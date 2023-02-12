@@ -12,7 +12,7 @@ CREATE TABLE DishAllergen (
 -- Table: Dishes
 CREATE TABLE Dishes (
     dishId serial  NOT NULL,
-    price money  NOT NULL,
+    price text  NOT NULL,
     name text  NOT NULL,
     CONSTRAINT Dishes_pk PRIMARY KEY (dishId)
 );
