@@ -32,7 +32,7 @@ module.exports = async function (req, res, next) {
 	} catch (error) {
 		
 		res.status(500);
-		res.json(error.stack);
+		res.send(error.stack);
 		res.end();
 		
 	}
