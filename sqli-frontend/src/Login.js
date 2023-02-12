@@ -1,47 +1,51 @@
 import './Login.css';
-import { useState } from 'react';
-import { apiCall } from './util';
+import {useState} from 'react';
+import {apiCall} from './util';
 
-const Login = ({ setLoginData }) => {
-
+const Login = ({setLoginData}) => {
+	
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
 	const [loginFailed, setLoginFailed] = useState(false);
-
+	
 	const handleNameChange = event => {
+		
 		setName(event.target.value);
+		
 	};
-
+	
 	const handlePasswordChange = event => {
+		
 		setPassword(event.target.value);
+		
 	};
-
+	
 	const login = async () => {
-
+		
 		const loginData = {
 			name,
 			password,
 			isGuest: false
 		};
-
+		
 		try {
 			// test if credentials are correct, throws if not
 			await apiCall(`menu/2023-01-01`, loginData);
 			setLoginData(loginData);
-			setLoginFailed(false)
+			setLoginFailed(false);
 		} catch (e) {
-			setLoginFailed(true)
+			setLoginFailed(true);
 		}
 	};
-
+	
 	const skip = () => {
-
+		
 		setLoginData({
 			isGuest: true
 		});
-
+		
 	};
-
+	
 	return <>
 		<div>
 			<h2>Login</h2>
@@ -57,7 +61,7 @@ const Login = ({ setLoginData }) => {
 			<div className={loginFailed ? 'error-message' : 'error-message hidden'}>The credentials you provided are incorrect.</div>
 		</div>
 	</>;
-
+	
 };
 
 export default Login;
