@@ -51,12 +51,19 @@ const Login = ({setLoginData}) => {
 		
 	};
 	
+	const handleKeyDown = event => {
+		
+		if (event.key === 'Enter')
+			login().catch(err => console.error(err));
+		
+	};
+	
 	return <>
 		<div>
 			<h2>Login</h2>
-			<input value={name} onChange={handleNameChange} placeholder='Name' />
+			<input value={name} onChange={handleNameChange} onKeyDown={handleKeyDown} placeholder='Name' />
 			<br />
-			<input value={password} onChange={handlePasswordChange} type="password" placeholder='Password' />
+			<input value={password} onChange={handlePasswordChange} onKeyDown={handleKeyDown} type="password" placeholder='Password' />
 			<br />
 			<br />
 			<button onClick={login}>Login</button>

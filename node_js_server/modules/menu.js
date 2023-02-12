@@ -22,8 +22,10 @@ const getMenu = async (req, res) => {
 		}
 		
 		const { rows } = await sqlCanteen.query(`
-			SELECT Dishes.dishId, Dishes.name, Dishes.price FROM Menu, Dishes
-				WHERE Menu.dishId = Dishes.dishId AND Menu.date = '${date}' AND NOT Menu.secret;
+			SELECT Dishes.dishId, Dishes.name, Dishes.price
+				FROM Menu INNER JOIN Dishes
+					ON Menu.dishId = Dishes.dishId
+				WHERE NOT Menu.secret AND Menu.date = '${date}';
 		`);
 		
 		const dishes = await Promise.all(rows.map(async ({ dishid, name, price }) => {
