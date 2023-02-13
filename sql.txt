@@ -1,8 +1,0 @@
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    name text NOT NULL,
-    address text,
-    salary real
-);
-
-INSERT INTO users (name, address, salary) VALUES ('Hans', 'Wilhelminenhofstrasse', 45.4);
