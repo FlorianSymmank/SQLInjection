@@ -46,3 +46,8 @@ cd ~/SQLInjection/node_js_server
 npm ci
 node app.js &# oder npm run start
 # serverlistens on 127.0.0.1:3000
+
+# React Frontend
+cd ~/SQLInjection/sqli-frontend
+npm ci
+node start &
