@@ -50,4 +50,4 @@ node app.js &# oder npm run start
 # React Frontend
 cd ~/SQLInjection/sqli-frontend
 npm ci
-node start &
+npm start &
