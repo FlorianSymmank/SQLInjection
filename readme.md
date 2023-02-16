@@ -29,7 +29,7 @@ Einige SQL Injections sind in [sqli.txt](sqli.txt) beschrieben.
 Möglich sind:
 - Boolean-Based
 - Error-Based
-- Time-Based (Komplexes [Angriffsscript](attack_scripts\fs\viaHeader.py) zum Herrausfinden von Tabellen und Spaltennamen)
+- Time-Based (Komplexes [Angriffsscript](attack_scripts/fs/viaHeader.py) zum Herrausfinden von Tabellen und Spaltennamen)
 - Union-Based
 - Stack-Based
 
