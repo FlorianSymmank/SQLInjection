@@ -53,29 +53,29 @@ INSERT INTO Dishes (dishId, price, name) VALUES (14, '$2.20', 'Chocolate Cake');
 INSERT INTO Dishes (dishId, price, name) VALUES (15, '$2.20', 'Creme Brulee');
 
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (0, 0, '2023-01-02', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (1, 6, '2023-01-02', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (0, 0, '2023-02-13', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (1, 6, '2023-02-13', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (2, 1, '2023-01-03', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (3, 2, '2023-01-03', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (2, 1, '2023-02-14', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (3, 2, '2023-02-14', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (4, 12, '2023-01-04', true);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (5, 7, '2023-01-04', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (6, 6, '2023-01-04', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (4, 12, '2023-02-15', true);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (5, 7, '2023-02-15', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (6, 6, '2023-02-15', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (7, 3, '2023-01-05', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (8, 4, '2023-01-05', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (7, 3, '2023-02-16', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (8, 4, '2023-02-16', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (9, 5, '2023-01-06', false); 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (10, 6, '2023-01-06', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (9, 5, '2023-02-17', false); 
+INSERT INTO Menu (id, dishId, date, secret) VALUES (10, 6, '2023-02-17', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (11, 9, '2023-01-07', true);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (12, 7, '2023-01-07', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (13, 8, '2023-01-07', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (11, 9, '2023-02-18', true);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (12, 7, '2023-02-18', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (13, 8, '2023-02-18', false);
 
-INSERT INTO Menu (id, dishId, date, secret) VALUES (14, 14, '2023-01-08', true);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (15, 10, '2023-01-08', false);
-INSERT INTO Menu (id, dishId, date, secret) VALUES (16, 11, '2023-01-08', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (14, 14, '2023-02-19', true);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (15, 10, '2023-02-19', false);
+INSERT INTO Menu (id, dishId, date, secret) VALUES (16, 11, '2023-02-19', false);
 
 INSERT INTO DishAllergen (dishId, allergen) VALUES (0, 'lactose');
 INSERT INTO DishAllergen (dishId, allergen) VALUES (2, 'lactose');
